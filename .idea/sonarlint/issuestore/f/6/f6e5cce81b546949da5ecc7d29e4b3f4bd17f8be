@@ -1,0 +1,17 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñÊÝ™úÿÿÿÿ
+_
+java:S2583#"DChange this condition so that it does not always evaluate to "false"(íÓÃžþÿÿÿÿ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+X
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ
+•
+java:S2159#"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(íÓÃžþÿÿÿÿ
+h
+java:S1128"RRemove this unused import 'com.example.portfolioApplication.dto.TradeResponseDTO'.(˜×†š
+Q
+java:S1128
+"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ

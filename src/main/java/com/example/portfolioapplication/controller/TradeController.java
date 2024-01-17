@@ -1,0 +1,33 @@
+package com.example.portfolioapplication.controller;
+
+import com.example.portfolioapplication.dto.TradeResponseDTO;
+import com.example.portfolioapplication.service.impl.TradeServiceImpl;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/")
+@AllArgsConstructor
+@Setter
+@Getter
+@NoArgsConstructor
+public class TradeController {
+
+    @Autowired
+    TradeServiceImpl tradeService;
+
+    @PostMapping("/trade")
+    TradeResponseDTO processTransaction(@RequestParam("UserId") String userId,
+                                        @RequestParam("TradeType") String tradeType,
+                                        @RequestParam("Quantity") Integer quantity,
+                                        @RequestParam("StockId") String stockId) {
+
+        String[] result = tradeService.performTransaction(userId, tradeType, quantity, stockId);
+        TradeResponseDTO response = new TradeResponseDTO(result[0], result[1]);
+        return response;
+    }
+}

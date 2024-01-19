@@ -3,6 +3,7 @@ package com.example.portfolioapplication.service;
 import com.example.portfolioapplication.dto.PortfolioResponseDTO;
 import com.example.portfolioapplication.entity.HoldingEntity;
 import com.example.portfolioapplication.entity.StockEntity;
+import org.springframework.context.annotation.Bean;
 
 import java.io.BufferedReader;
 import java.io.IOException;

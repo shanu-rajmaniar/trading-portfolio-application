@@ -5,21 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity(name = "holdings")
+@Entity
+@Table(name = "holdings")
 public class HoldingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String transactionId;
+    private String Id;
 
     private String userId;
 

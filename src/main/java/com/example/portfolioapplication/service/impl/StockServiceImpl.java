@@ -12,6 +12,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.URL;
@@ -23,6 +24,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Service
 public class StockServiceImpl implements StockService {
 
     @Autowired
@@ -67,7 +69,7 @@ public class StockServiceImpl implements StockService {
         return userPortfolio;
     }
 
-    public void downloadAndExtractNseCmBhavcopy() throws IOException {
+    public void  downloadAndExtractNseCmBhavcopy() throws IOException {
         String baseUrl = "https://archives.nseindia.com/content/historical/EQUITIES/";
         String destinationPath = "/Users/shanurm/Downloads/quickstart/";
 

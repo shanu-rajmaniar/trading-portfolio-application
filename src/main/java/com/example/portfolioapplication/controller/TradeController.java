@@ -4,6 +4,7 @@ import com.example.portfolioapplication.dto.TradeResponseDTO;
 import com.example.portfolioapplication.service.impl.TradeServiceImpl;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,7 @@ public class TradeController {
     @Autowired
     TradeServiceImpl tradeService;
 
-    @PostMapping("/trade")
+    @PostMapping(value = "/trade", produces = MediaType.APPLICATION_JSON_VALUE)
     TradeResponseDTO processTransaction(@RequestParam("UserId") String userId,
                                         @RequestParam("TradeType") String tradeType,
                                         @RequestParam("Quantity") Integer quantity,

@@ -4,11 +4,13 @@ import com.example.portfolioapplication.dto.StockDetailResponseDTO;
 import com.example.portfolioapplication.entity.StockEntity;
 import com.example.portfolioapplication.service.impl.StockServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @RestController
+@Controller
 @RequestMapping("/api/v1/")
 public class StockController {
 

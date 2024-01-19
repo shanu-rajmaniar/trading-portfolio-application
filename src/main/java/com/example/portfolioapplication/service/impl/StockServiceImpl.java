@@ -132,7 +132,7 @@ public class StockServiceImpl implements StockService {
             Double highPrice = Double.valueOf(columns[6]);
             Double lowPrice = Double.valueOf(columns[7]);
             Double closePrice = Double.valueOf(columns[8]);
-            Double settlementPrice = Double.valueOf(columns[25]);
+            Double settlementPrice = Double.valueOf(columns[5]);
             StockEntity stock = new StockEntity(stockId, stockName, openPrice, highPrice, lowPrice, closePrice, settlementPrice);
             stockRepository.save(stock);
         }

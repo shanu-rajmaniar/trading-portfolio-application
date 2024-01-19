@@ -12,6 +12,6 @@ java:S6813!"BRemove this field injection and use constructor injection instead.
 c
 java:S1075J"ARefactor your code to get this URI from a customizable parameter.(×ãõ¶ıÿÿÿÿ8ò¾…Ò1
 _
-java:S1854s"=Remove this useless assignment to local variable "inputFile".(Å¹‹ßşÿÿÿÿ8‰ò¾…Ò1
+java:S1854s"=Remove this useless assignment to local variable "inputFile".(Å¹‹ßşÿÿÿÿ8å©£™Ò1
 P
-java:S1481s".Remove this unused "inputFile" local variable.(Å¹‹ßşÿÿÿÿ8‹ò¾…Ò1
+java:S1481s".Remove this unused "inputFile" local variable.(Å¹‹ßşÿÿÿÿ8ç©£™Ò1

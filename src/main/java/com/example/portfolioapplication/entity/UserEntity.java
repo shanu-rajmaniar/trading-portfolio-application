@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,8 +17,8 @@ import javax.persistence.Table;
 public class  UserEntity {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer userId;
 
     private Integer accountBalance;
 }

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,8 +16,8 @@ import javax.persistence.*;
 public class HoldingEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long Id;
 
     private String userId;
 
@@ -25,6 +25,6 @@ public class HoldingEntity {
 
     private String stockId;
 
-    private Double quantity;
+    private Integer quantity;
 
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 public class Holdings {
     String stockName;
     String stockId;
-    Double quantity;
+    Integer quantity;
     Double buyPrice;
     Double currentPrice;
     Double pnl;

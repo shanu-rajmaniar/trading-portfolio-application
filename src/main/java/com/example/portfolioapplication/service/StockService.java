@@ -15,7 +15,7 @@ import java.util.List;
 public interface StockService {
     StockEntity fetchStockDetails(String stockId);
 
-    List<HoldingEntity> fetchUserHoldings(String userId);
+    List<HoldingEntity> fetchUserHoldings(Integer userId);
 
     PortfolioResponseDTO calculateUserPortfolio(List<HoldingEntity> holdings);
 

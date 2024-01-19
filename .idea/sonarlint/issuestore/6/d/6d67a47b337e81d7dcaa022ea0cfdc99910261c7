@@ -1,17 +1,17 @@
 
 z
-java:S1488%"]Immediately return this expression instead of assigning it to the temporary variable "stock".(³¯„î8Çñ¾…Ò1
+java:S1488&"]Immediately return this expression instead of assigning it to the temporary variable "stock".(³¯„î8Ï«ÓÒ1
 ‚
-java:S1488*"`Immediately return this expression instead of assigning it to the temporary variable "holdings".(­ä©üÿÿÿÿ8Çñ¾…Ò1
+java:S1488+"`Immediately return this expression instead of assigning it to the temporary variable "holdings".(­ä©üÿÿÿÿ8Ï«ÓÒ1
 e
-java:S3518D"CMake sure "totalBuyPrice" can't be zero before doing this division.(…×îÇıÿÿÿÿ8şú¼‡Ò1
+java:S3518F"CMake sure "totalBuyPrice" can't be zero before doing this division.(…×îÇıÿÿÿÿ8õ–ÔÒ1
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8öñ¾…Ò1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ì«ÓÒ1
 _
-java:S6813!"BRemove this field injection and use constructor injection instead.(êæÄŞ8÷ñ¾…Ò1
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8ì«ÓÒ1
 c
-java:S1075J"ARefactor your code to get this URI from a customizable parameter.(×ãõ¶ıÿÿÿÿ8ò¾…Ò1
+java:S1075L"ARefactor your code to get this URI from a customizable parameter.(×ãõ¶ıÿÿÿÿ8ö«ÓÒ1
 _
-java:S1854s"=Remove this useless assignment to local variable "inputFile".(Å¹‹ßşÿÿÿÿ8å©£™Ò1
+java:S1854u"=Remove this useless assignment to local variable "inputFile".(Å¹‹ßşÿÿÿÿ8€¬ÓÒ1
 P
-java:S1481s".Remove this unused "inputFile" local variable.(Å¹‹ßşÿÿÿÿ8ç©£™Ò1
+java:S1481u".Remove this unused "inputFile" local variable.(Å¹‹ßşÿÿÿÿ8‚¬ÓÒ1

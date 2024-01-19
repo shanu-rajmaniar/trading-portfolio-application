@@ -17,14 +17,13 @@ public class HoldingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Integer Id;
 
-    private String userId;
+    private Integer userId;
 
     private Double buyPrice;
 
     private String stockId;
 
     private Integer quantity;
-
 }

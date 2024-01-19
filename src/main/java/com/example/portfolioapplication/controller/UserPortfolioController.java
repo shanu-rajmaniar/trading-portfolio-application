@@ -18,7 +18,7 @@ public class UserPortfolioController {
     StockServiceImpl stockService;
 
     @GetMapping("/user_portfolio/{user_id}")
-    PortfolioResponseDTO getUserPortfolio(@PathVariable("user_id") String userId) {
+    PortfolioResponseDTO getUserPortfolio(@PathVariable("user_id") Integer userId) {
         List<HoldingEntity> holdings = stockService.fetchUserHoldings(userId);
         PortfolioResponseDTO response = stockService.calculateUserPortfolio(holdings);
         return response;

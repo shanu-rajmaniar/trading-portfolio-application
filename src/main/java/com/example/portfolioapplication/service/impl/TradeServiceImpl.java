@@ -2,6 +2,7 @@ package com.example.portfolioapplication.service.impl;
 
 import com.example.portfolioapplication.entity.HoldingEntity;
 import com.example.portfolioapplication.entity.StockEntity;
+import com.example.portfolioapplication.entity.UserEntity;
 import com.example.portfolioapplication.repository.HoldingRepository;
 import com.example.portfolioapplication.repository.StockRepository;
 import com.example.portfolioapplication.repository.UserRepository;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.Optional;
 
 
 @Setter
@@ -33,8 +35,14 @@ public class TradeServiceImpl implements TradeService {
     @Autowired
     private StockRepository stockRepository;
 
-    public String[] performTransaction(String userId, String tradeType, Integer quantity, String stockId) {
+    public String[] performTransaction(Integer userId, String tradeType, Integer quantity, String stockId) {
         HoldingEntity holding = holdingRepository.findByUserIdAndStockId(userId, stockId);
+        UserEntity user = userRepository.findByUserId(userId);
+        if(Objects.isNull(user)) {
+            user = new UserEntity();
+            user.setUserId(userId);
+            userRepository.save(user);
+        }
         HoldingEntity newHolding = new HoldingEntity();
         newHolding.setUserId(userId);
         newHolding.setStockId(stockId);
@@ -42,10 +50,8 @@ public class TradeServiceImpl implements TradeService {
             newHolding.setBuyPrice(0.0);
             newHolding.setQuantity(0);
         } else {
-//            newHolding.setId(holding.getId());
             newHolding.setBuyPrice(holding.getBuyPrice());
             newHolding.setQuantity(holding.getQuantity());
-            holdingRepository.delete(holding);
         }
         Integer currentStockQuantity = newHolding.getQuantity();
         Double stockBuyPrice = newHolding.getBuyPrice();
@@ -65,6 +71,9 @@ public class TradeServiceImpl implements TradeService {
             holdingRepository.save(newHolding);
         } else {
             result = new String[]{"Failure", "Not enough shares to sell!"};
+        }
+        if(!Objects.isNull(holding)) {
+            holdingRepository.delete(holding);
         }
         return result;
     }

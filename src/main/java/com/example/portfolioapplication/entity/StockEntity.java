@@ -16,18 +16,11 @@ import jakarta.persistence.*;
 @Table(name = "stocks")
 public class StockEntity {
     @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     String stockId;
-
     String stockName;
-
     Double openPrice;
-
     Double highPrice;
-
     Double lowPrice;
-
     Double closePrice;
-
     Double settlementPrice;
 }

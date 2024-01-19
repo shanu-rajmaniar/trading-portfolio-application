@@ -9,7 +9,8 @@ import java.util.List;
 @Repository
 public interface HoldingRepository extends JpaRepository<HoldingEntity, Long> {
 
-    HoldingEntity findByUserIdAndStockId(String userId, String stockId);
+    HoldingEntity findByUserIdAndStockId(Integer userId, String stockId);
 
-    List<HoldingEntity> findByUserId(String userId);
+    List<HoldingEntity> findByUserId(Integer userId);
+
 }

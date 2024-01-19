@@ -22,7 +22,7 @@ public class TradeController {
     TradeServiceImpl tradeService;
 
     @PostMapping(value = "/trade", produces = MediaType.APPLICATION_JSON_VALUE)
-    TradeResponseDTO processTransaction(@RequestParam("UserId") String userId,
+    TradeResponseDTO processTransaction(@RequestParam("UserId") Integer userId,
                                         @RequestParam("TradeType") String tradeType,
                                         @RequestParam("Quantity") Integer quantity,
                                         @RequestParam("StockId") String stockId) {

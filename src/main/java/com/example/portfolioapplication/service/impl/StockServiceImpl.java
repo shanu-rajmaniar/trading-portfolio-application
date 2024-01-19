@@ -22,6 +22,7 @@ import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,13 +39,14 @@ public class StockServiceImpl implements StockService {
         return stock;
     }
 
-    public List<HoldingEntity> fetchUserHoldings(String userId) {
+    public List<HoldingEntity> fetchUserHoldings(Integer userId) {
         List<HoldingEntity> holdings = holdingRepository.findByUserId(userId);
         return holdings;
     }
 
     public PortfolioResponseDTO calculateUserPortfolio(@NotNull List<HoldingEntity> holdings) {
         PortfolioResponseDTO userPortfolio = new PortfolioResponseDTO();
+        userPortfolio.holdings = new ArrayList<Holdings>();
         Double totalPortfolioHolding = 0.0;
         Double totalBuyPrice = 0.0;
         Double totalProfitAndLoss = 0.0;

@@ -58,17 +58,9 @@ public class TradeServiceImpl implements TradeService {
         StockEntity stock = stockRepository.findByStockId(stockId);
         String[] result = {"Success", "Order executed successfully!"};
         if(tradeType.equals("buy")) {
-            stockBuyPrice += quantity * stock.getClosePrice();
-            currentStockQuantity += quantity;
-            newHolding.setBuyPrice(stockBuyPrice);
-            newHolding.setQuantity(currentStockQuantity);
-            holdingRepository.save(newHolding);
+            buyStocks(newHolding, currentStockQuantity, stockBuyPrice, stock, quantity);
         } else if(currentStockQuantity >= quantity) {
-            stockBuyPrice -= quantity * stock.getClosePrice();
-            currentStockQuantity -= quantity;
-            newHolding.setBuyPrice(stockBuyPrice);
-            newHolding.setQuantity(currentStockQuantity);
-            holdingRepository.save(newHolding);
+            sellStocks(newHolding, currentStockQuantity, stockBuyPrice, stock, quantity);
         } else {
             result = new String[]{"Failure", "Not enough shares to sell!"};
         }
@@ -76,5 +68,21 @@ public class TradeServiceImpl implements TradeService {
             holdingRepository.delete(holding);
         }
         return result;
+    }
+
+    public void buyStocks(HoldingEntity newHolding, Integer currentStockQuantity, Double stockBuyPrice, StockEntity stock, Integer quantity) {
+        stockBuyPrice += quantity * stock.getClosePrice();
+        currentStockQuantity += quantity;
+        newHolding.setBuyPrice(stockBuyPrice);
+        newHolding.setQuantity(currentStockQuantity);
+        holdingRepository.save(newHolding);
+    }
+
+    public void sellStocks(HoldingEntity newHolding, Integer currentStockQuantity, Double stockBuyPrice, StockEntity stock, Integer quantity) {
+        stockBuyPrice -= quantity * stock.getClosePrice();
+        currentStockQuantity -= quantity;
+        newHolding.setBuyPrice(stockBuyPrice);
+        newHolding.setQuantity(currentStockQuantity);
+        holdingRepository.save(newHolding);
     }
 }

@@ -1,9 +1,0 @@
-
-}
-java:S1488"`Immediately return this expression instead of assigning it to the temporary variable "response".(Êµò8ƒÕşÒ1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8‹ÕşÒ1
-L	java:S106"+Replace this use of System.out by a logger.(Ë ııÿÿÿÿ8ÕşÒ1
-G	java:S106"+Replace this use of System.out by a logger.(² Îñ8™¬„Ò1
-M
-java:S1128"0Remove this unused import 'java.io.PrintStream'.(×ê’8ÕşÒ1

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,8 +42,6 @@ public class TradeServiceImplTests {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        StockEntity stock = new StockEntity("INE669E01016", "IDEA", 15.2, 15.45, 15.0, 15.1, 15.2);
-        stockRepository.save(stock);
     }
 
     @Test
@@ -84,9 +83,8 @@ public class TradeServiceImplTests {
 
     @Test
     public void performTransactionTestsNewUser() {
-        StockEntity stock = new StockEntity("INE669E01016", "IDEA", 100.0, 100.0, 100.0, 100.0, 100.0);
-        stockRepository.save(stock);
-        tradeService.performTransaction(1, "buy", 100, "INE669E01016");
+        Mockito.when(stockRepository.findByStockId("INE669E01016")).thenReturn(new StockEntity("INE669E01016", "INE669E01016", 1.0, 1.0, 1.0, 1.0, 1.0));
+        String[] result = tradeService.performTransaction(1, "buy", 100, "INE669E01016");
 
         verify(userRepository).save(argThat(argument -> {
             return argument.getUserId().equals(1);
@@ -95,5 +93,26 @@ public class TradeServiceImplTests {
         verify(holdingRepository).save(argThat(argument -> {
             return argument.getUserId().equals(1) && argument.getStockId().equals("INE669E01016");
         }));
+
+        Assertions.assertEquals(result[0], "Success");
+        Assertions.assertEquals(result[1], "Order executed successfully!");
+    }
+
+    @Test
+    public void performTransactionTests() {
+        Mockito.when(stockRepository.findByStockId("INE669E01016")).thenReturn(new StockEntity("INE669E01016", "INE669E01016", 1.0, 1.0, 1.0, 1.0, 1.0));
+        Mockito.when(holdingRepository.findByUserIdAndStockId(1, "INE669E01016")).thenReturn(new HoldingEntity(1, 1, 500.0, "INE669E01016", 20));
+        String[] result = tradeService.performTransaction(1, "buy", 100, "INE669E01016");
+
+        verify(userRepository).save(argThat(argument -> {
+            return argument.getUserId().equals(1);
+        }));
+
+        verify(holdingRepository).save(argThat(argument -> {
+            return argument.getUserId().equals(1) && argument.getStockId().equals("INE669E01016");
+        }));
+
+        Assertions.assertEquals(result[0], "Success");
+        Assertions.assertEquals(result[1], "Order executed successfully!");
     }
 }

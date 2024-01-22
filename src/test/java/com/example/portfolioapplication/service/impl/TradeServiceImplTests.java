@@ -3,19 +3,27 @@ package com.example.portfolioapplication.service.impl;
 import com.example.portfolioapplication.entity.HoldingEntity;
 import com.example.portfolioapplication.entity.StockEntity;
 import com.example.portfolioapplication.repository.HoldingRepository;
+import com.example.portfolioapplication.repository.StockRepository;
+import com.example.portfolioapplication.repository.UserRepository;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.verify;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
+@AutoConfigureTestDatabase
+@Transactional
 public class TradeServiceImplTests {
 
     @InjectMocks
@@ -24,14 +32,22 @@ public class TradeServiceImplTests {
     @Mock
     private HoldingRepository holdingRepository;
 
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private StockRepository stockRepository;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        StockEntity stock = new StockEntity("INE669E01016", "IDEA", 15.2, 15.45, 15.0, 15.1, 15.2);
+        stockRepository.save(stock);
+    }
+
     @Test
     public void canary() {
         Assertions.assertTrue(true);
-    }
-    @BeforeEach
-    public void setUp() {
-        // Initialize annotated mocks
-        MockitoAnnotations.initMocks(this);
     }
 
     @Test
@@ -63,6 +79,21 @@ public class TradeServiceImplTests {
 
         verify(holdingRepository).save(argThat(argument -> {
             return argument.getBuyPrice().equals(100.0) && argument.getQuantity().equals(5);
+        }));
+    }
+
+    @Test
+    public void performTransactionTestsNewUser() {
+        StockEntity stock = new StockEntity("INE669E01016", "IDEA", 100.0, 100.0, 100.0, 100.0, 100.0);
+        stockRepository.save(stock);
+        tradeService.performTransaction(1, "buy", 100, "INE669E01016");
+
+        verify(userRepository).save(argThat(argument -> {
+            return argument.getUserId().equals(1);
+        }));
+
+        verify(holdingRepository).save(argThat(argument -> {
+            return argument.getUserId().equals(1) && argument.getStockId().equals("INE669E01016");
         }));
     }
 }
